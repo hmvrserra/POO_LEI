@@ -1,11 +1,13 @@
+import java.io.File;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.io.PrintWriter;
 
 public class Disciplina {
 
     private String nome;
     private String sigla;
     private int capacidade;
-
     private ArrayList<Inscricao> inscricoes = new ArrayList<>();
 
     public Disciplina(String nome, String sigla, int capacidade) {
@@ -43,6 +45,19 @@ public class Disciplina {
                 sigla += c;
         }
         return sigla;
+    }
+
+    public void escreverFicheiroDeSaida(Disciplina disciplina) {
+        try {
+            PrintWriter writer = new PrintWriter(new File("Semana2/" + disciplina.sigla + ".txt"));
+            writer.println(disciplina.nome + "\n" + disciplina.capacidade);
+
+            for (Inscricao insc: disciplina.inscricoes)
+                writer.println(insc.getAluno().getNumero() + " " + insc.getNota());
+
+        } catch (Exception e) {
+            System.err.println("Erro ao escrever no ficheiro de saída");
+        }
     }
 
     @Override
