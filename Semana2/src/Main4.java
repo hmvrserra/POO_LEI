@@ -18,7 +18,7 @@ public class Main4 {
         disciplina.atualizarNota(aluno2, 15);
         disciplina.atualizarNota(aluno3, 0);
 
-        Disciplina.escreverFicheiroDeSaida(disciplina);
+        disciplina.escreverFicheiroDeSaida(disciplina.getSigla());
 
         System.out.println(disciplina);
     }

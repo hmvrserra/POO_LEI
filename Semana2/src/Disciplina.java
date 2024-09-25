@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Disciplina {
 
@@ -27,6 +28,10 @@ public class Disciplina {
             System.err.println("O aluno " + aluno + " já não tem espaço em " + sigla + "...");
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
     public void atualizarNota(Aluno aluno, int nota) {
         for (Inscricao insc: inscricoes) {
             if (insc.getAluno().getNumero() == aluno.getNumero()) {
@@ -35,6 +40,26 @@ public class Disciplina {
             }
         }
         System.err.println("Aluno não encontrado");
+    }
+
+    public void escreverFicheiroDeSaida(String nomeFicheiro) {
+        try {
+            PrintWriter writer = new PrintWriter(new File("Semana2/" + nomeFicheiro + ".txt"));
+            writer.println(this.nome + "\n" + this.capacidade);
+
+            for (Inscricao insc: this.inscricoes) {
+                int nota = insc.getNota();
+                if (nota == -1)
+                    writer.println(insc.getAluno().getNumero() + " NA");
+                else
+                    writer.println(insc.getAluno().getNumero() + " " + nota);
+            }
+
+            writer.close();
+        }
+        catch (Exception e) {
+            System.err.println("Erro ao escrever no ficheiro de saída");
+        }
     }
 
     public static Disciplina criarDisciplina(String nomeDisciplina, int capacidade, ArrayList<Aluno> alunos){
@@ -48,6 +73,7 @@ public class Disciplina {
         return disciplina;
     }
 
+
     public static String criarSigla (String nomeDisciplina) {
         String sigla = new String();
 
@@ -56,26 +82,6 @@ public class Disciplina {
                 sigla += c;
         }
         return sigla;
-    }
-
-    public static void escreverFicheiroDeSaida(Disciplina disciplina) {
-        try {
-            PrintWriter writer = new PrintWriter(new File("Semana2/" + disciplina.sigla + ".txt"));
-            writer.println(disciplina.nome + "\n" + disciplina.capacidade);
-
-            for (Inscricao insc: disciplina.inscricoes) {
-                int nota = insc.getNota();
-                if (nota == -1)
-                    writer.println(insc.getAluno().getNumero() + " NA");
-                else
-                    writer.println(insc.getAluno().getNumero() + " " + nota);
-            }
-
-            writer.close();
-        }
-        catch (Exception e) {
-            System.err.println("Erro ao escrever no ficheiro de saída");
-        }
     }
 
     @Override
