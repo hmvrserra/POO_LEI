@@ -1,3 +1,4 @@
+import javax.print.attribute.standard.MediaSize;
 import java.io.File;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -26,6 +27,16 @@ public class Disciplina {
             System.err.println("O aluno " + aluno + " já não tem espaço em " + sigla + "...");
     }
 
+    public void atualizarNota(Aluno aluno, int nota) {
+        for (Inscricao insc: inscricoes) {
+            if (insc.getAluno().getNumero() == aluno.getNumero()) {
+                insc.setNota(nota);
+                return;
+            }
+        }
+        System.err.println("Aluno não encontrado");
+    }
+
     public static Disciplina criarDisciplina(String nomeDisciplina, int capacidade, ArrayList<Aluno> alunos){
         String sigla = criarSigla(nomeDisciplina);
 
@@ -47,15 +58,22 @@ public class Disciplina {
         return sigla;
     }
 
-    public void escreverFicheiroDeSaida(Disciplina disciplina) {
+    public static void escreverFicheiroDeSaida(Disciplina disciplina) {
         try {
             PrintWriter writer = new PrintWriter(new File("Semana2/" + disciplina.sigla + ".txt"));
             writer.println(disciplina.nome + "\n" + disciplina.capacidade);
 
-            for (Inscricao insc: disciplina.inscricoes)
-                writer.println(insc.getAluno().getNumero() + " " + insc.getNota());
+            for (Inscricao insc: disciplina.inscricoes) {
+                int nota = insc.getNota();
+                if (nota == -1)
+                    writer.println(insc.getAluno().getNumero() + " NA");
+                else
+                    writer.println(insc.getAluno().getNumero() + " " + nota);
+            }
 
-        } catch (Exception e) {
+            writer.close();
+        }
+        catch (Exception e) {
             System.err.println("Erro ao escrever no ficheiro de saída");
         }
     }
