@@ -1,0 +1,6 @@
+Introdução â Programação
+100
+1 12
+2 15
+3 0
+4 NA
