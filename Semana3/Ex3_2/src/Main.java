@@ -27,7 +27,7 @@ public class Main {
         }
 
         Arrays.sort(alunos, new AnoNascimentoComparator());
-        System.out.println("\nAlunos ordenados por ano de nascimento (caso sejam iguais desempata por ano de matrícula):");
+        System.out.println("\nAlunos ordenados por ano de nascimento (caso sejam iguais desempata por ano de matrícula, caso os anos de matrícula sejam iguais desempata por nome):");
         for (Aluno aluno : alunos) {
             System.out.println(aluno);
         }
