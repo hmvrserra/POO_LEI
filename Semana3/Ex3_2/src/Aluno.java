@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class Aluno {
     int numero;
     String nome;
@@ -11,6 +10,22 @@ public class Aluno {
         this.nome = nome;
         this.anoMatricula = anoMatricula;
         this.anoNascimento = anoNascimento;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getAnoMatricula() {
+        return anoMatricula;
+    }
+
+    public int getAnoNascimento() {
+        return anoNascimento;
     }
 
     @Override

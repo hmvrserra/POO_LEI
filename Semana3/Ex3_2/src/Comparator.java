@@ -1,3 +1,3 @@
 public interface Comparator<T> {
-    int compare (T first, T second);
+    int compare(T first, T second);
 }
