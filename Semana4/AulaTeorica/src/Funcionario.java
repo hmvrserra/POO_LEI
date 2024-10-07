@@ -23,7 +23,7 @@ public class Funcionario {
 
     @Override
     public String toString(){
-        return "Nome: " + nome + "| ID: " + id + "| Salário: " + salario();
+        return "Nome: " + nome + " | ID: " + id + " | Salário: " + salario();
     }
 
 }
