@@ -21,5 +21,6 @@ public class Empresa {
         for (Empregado empregado : empregados) {
             System.out.println(empregado);
         }
+        System.out.println();
     }
 }
