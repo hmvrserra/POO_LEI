@@ -12,6 +12,7 @@ public class Main {
         staff.add(new Gerente("Dra. Ana", 4));
         staff.add(new Diretor("Dr. Carlos", 5, "TI"));
 
+        //Print all staff
         for (Funcionario f : staff) {
             System.out.println(f);
         }
