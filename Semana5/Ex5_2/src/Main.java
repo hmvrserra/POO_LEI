@@ -1,15 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Time t1 = new Time(5, 30);
+        System.out.println("Tempo 1:" + t1);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Time t2 = new Time("2:45");
+        System.out.println("Tempo 2:" + t2);
+
+        Time t3 = t1.add(t2);
+        System.out.println("Tempo 1 + Tempo 2: " + t3);
+
+        Time t4 = t1.subtract(t2);
+        System.out.println("Tempo 1 - Tempo 2: " + t4);
+
+        System.out.println("Tempo 1 é maior que Tempo 2? " + t1.isGreaterThan(t2));
+        System.out.println("Tempo 1 é menor que Tempo 2? " + t1.isLessThan(t2));
     }
 }

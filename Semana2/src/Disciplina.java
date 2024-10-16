@@ -56,9 +56,8 @@ public class Disciplina {
             }
 
             writer.close();
-        }
-        catch (Exception e) {
-            System.err.println("Erro ao escrever no ficheiro de saída");
+        } catch (Exception e) {
+            System.err.println("Erro ao escrever ficheiro de saída: " + e.getMessage());
         }
     }
 
