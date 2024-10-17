@@ -20,6 +20,19 @@ public class Artist {
     }
 
     public void addAlbum(Album album) {
-        albums.add(album);
+        if (!albums.contains(album)) {
+            albums.add(album);
+        }
+    }
+
+    public boolean hasAlbum(Album album) {
+        return albums.contains(album);
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Artist{name='" + name + "', albums=" + albums.size() + "}";
     }
 }

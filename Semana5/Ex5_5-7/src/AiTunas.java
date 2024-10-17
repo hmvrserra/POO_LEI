@@ -5,10 +5,12 @@ public class AiTunas {
 
     private List<Album> albums;
     private List<Artist> artists;
+    private List<Playlist> playlists;
 
     public AiTunas() {
         this.albums = new ArrayList<>();
         this.artists = new ArrayList<>();
+        this.playlists = new ArrayList<>();
     }
 
     public void load(String directoryPath) {
@@ -50,4 +52,21 @@ public class AiTunas {
         return false;
     }
 
+    public void addPlaylist(Playlist playlist) {
+        playlists.add(playlist);
+    }
+
+    public List<Playlist> getAllPlaylists() {
+        return playlists;
+    }
+
+    public Playlist findPlaylist(String name) {
+        for (Playlist playlist : playlists) {
+            if (playlist.getName().equals(name)) {
+                return playlist;
+            }
+        }
+        throw new IllegalArgumentException("Playlist not found");
+    }
 }
+

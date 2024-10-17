@@ -45,6 +45,10 @@ public class Album {
         return duration;
     }
 
+    public Artist getArtist(String name) {
+        return new Artist(name);
+    }
+
     public static Album load(String file) {
         try {
             Scanner scanner = new Scanner(new File(file));
@@ -115,13 +119,19 @@ public class Album {
                 return title;
             }
 
-            public String getDuration() {
-                return duration.toString();
+            public Time getDuration() {
+                return duration;
+            }
+
+            public Artist getArtist() {
+                return Album.this.getArtist(artists.get(0));
             }
 
             @Override
             public String toString() {
                 return trackNumber + " - " + title + " (" + duration + ")";
             }
-        }
+
+
+    }
 }
